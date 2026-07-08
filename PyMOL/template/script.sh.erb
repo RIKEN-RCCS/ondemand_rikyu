@@ -1,0 +1,11 @@
+<%= set_xfce %>
+
+# Start PyMOL
+<% if !context.global_input_file.to_s.empty? %>
+vglrun -d egl pymol "<%= context.global_input_file %>" &
+<% else %>
+vglrun -d egl pymol &
+<% end %>
+
+# Start up xfce desktop (block until user logs out of desktop)
+xfce4-session

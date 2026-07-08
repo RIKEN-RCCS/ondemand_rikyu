@@ -1,0 +1,8 @@
+---
+cluster: rikyu
+form:
+  - global_hours
+  - global_gpus
+  - global_processes
+  - global_input_file
+  
