@@ -1,0 +1,13 @@
+---
+v2:
+  metadata:
+    title: "RIKYU"
+  login:
+    host: "c000"
+  job:
+    adapter: "slurm"
+  batch_connect:
+    ssh_allow: false
+    vnc:
+      websockify_timeout_seconds: "30"
+      

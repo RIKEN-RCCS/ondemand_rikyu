@@ -1,0 +1,1 @@
+SLURM_CONF_SERVER="sctl1:6817,sctl2:6817"

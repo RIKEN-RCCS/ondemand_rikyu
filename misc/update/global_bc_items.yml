@@ -1,0 +1,83 @@
+global_bc_form_items:
+  global_hours:
+    widget: "number_field"
+    label: 'Maximum run time (1 - 96 hours)*'
+    value: 1
+    min: 1
+    max: 96
+    required: true
+
+  global_gpus:
+    widget: "select"
+    label: 'Number of GPUs*'
+    options:
+    - ["1",   "1", data-label-global-processes: 'Number of processes (1 - 36)',  data-min-global-processes: 1, data-max-global-processes: 36  ]
+    - ["2",   "2", data-label-global-processes: 'Number of processes (1 - 72)',  data-min-global-processes: 1, data-max-global-processes: 72  ]
+    - ["3",   "3", data-label-global-processes: 'Number of processes (1 - 108)', data-min-global-processes: 1, data-max-global-processes: 108 ]
+    - ["4",   "4", data-label-global-processes: 'Number of processes (1 - 144)', data-min-global-processes: 1, data-max-global-processes: 144 ]
+    - ["8",   "8", data-label-global-processes: 'Number of processes (2 - 288)', data-min-global-processes: 2, data-max-global-processes: 288 ]
+    - ["12", "12", data-label-global-processes: 'Number of processes (3 - 432)', data-min-global-processes: 3, data-max-global-processes: 432 ]
+    - ["16", "16", data-label-global-processes: 'Number of processes (4 - 576)', data-min-global-processes: 4, data-max-global-processes: 576 ]
+    help: |
+      <p>The number of nodes allocated, max CPU cores, and max memory vary depending on the number of GPUs.</p>
+      <table class="gpu-spec-table">
+        <tbody>
+          <tr>
+            <th>GPUs</th>
+            <th>Nodes allocated</th>
+            <th>Max CPU cores/node</th>
+            <th>Max memory/node</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td rowspan="4">1</td>
+            <td>36</td>
+            <td>400 GB</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>72</td>
+            <td>800 GB</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>108</td>
+            <td>1,200 GB</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td rowspan="4">144</td>
+            <td rowspan="4">1,600 GB</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>4</td>
+          </tr>
+        </tbody>
+      </table>
+
+  global_processes:
+    widget: "number_field"
+    label: "Number of processes"
+    value: 1
+    required: false
+    help: |
+      <p>This value is only used when running an MPI program.</p>
+
+  global_input_file:
+    widget: "path_selector"
+    label: "Input file"
+    show_files: true
+    
+  global_email:
+    widget: "email_field"
+    label: "Email address (You will receive an email when it starts)"
+  

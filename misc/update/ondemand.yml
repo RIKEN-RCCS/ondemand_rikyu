@@ -1,0 +1,36 @@
+pinned_apps:
+  - category: Files
+  - category: Jobs
+  - category: Clusters
+  - sys/Desktop
+  - sys/Terminal
+  - sys/VSCode
+  - sys/Gnuplot
+  - sys/Paraview
+  - sys/PyMOL
+
+nav_bar:
+  - Files
+  - Jobs
+  - Clusters
+  - Interactive Apps
+  - My Interactive Sessions
+
+remote_files_enabled: true
+
+dashboard_layout:
+  rows:
+    - columns:
+      - width: 12
+        widgets:
+          - pinned_apps
+
+custom_css_files: ["/rikyu.css"]
+
+help_menu:
+  - title: "Manual (English)"
+    icon: "fas://book"
+    url: "https://docs.r-ccs.riken.jp/rikyu/en/"
+  - title: "Manual (Japanese)"
+    icon: "fas://book"
+    url: "https://docs.r-ccs.riken.jp/rikyu/ja/"
