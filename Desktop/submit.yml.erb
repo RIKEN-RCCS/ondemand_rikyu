@@ -1,6 +1,7 @@
 <%
   require_relative "/var/www/ood/apps/sys/ondemand_rikyu/misc/config.rb"
   XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+  APP_NAME = "Desktop"
 %>
 ---
 batch_connect:
@@ -18,8 +19,8 @@ batch_connect:
 
     # Set SINGULARITY_BINDPATH
     export APPTAINER_BIND=/fast1,/shared,/data1,/etc/profile.d,/tmp
-    export APPTAINERENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["aarch64"] %>/Desktop
-    apptainer run --env PS1='\u@\h:\w\$ ' --nv /home/ondemand/images/desktop.sif bash ./container.sh
+    export APPTAINERENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["aarch64"] %>/<%= APP_NAME %>
+    apptainer run --env PS1='\u@\h:\w\$ ' --nv <%= CONTAINER_IMAGE["aarch64"] %> bash ./container.sh
 
 script:
-  <%= script("ood_Desktop", global_hours, global_gpus, global_processes) %>
+  <%= script("ood_#{APP_NAME}", global_hours, global_gpus, global_processes) %>

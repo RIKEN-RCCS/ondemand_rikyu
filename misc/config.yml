@@ -4,4 +4,4 @@ xdg_data_home:
 
 container_image:
   #x86_64:  /cloud_opt/ondemand/rocky97_x86_64.sif
-  aarch64: /home/ondemand/ubuntu2404_aarch64.sif
+  aarch64: /home/ondemand/images/ubuntu2404_aarch64.sif
