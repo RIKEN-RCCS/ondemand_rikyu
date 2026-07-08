@@ -1,0 +1,27 @@
+<%
+  require_relative "/var/www/ood/apps/sys/ondemand_rikyu/misc/config.rb"
+  XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+%>
+#!/usr/bin/env bash
+
+# select image and create a directory for extensions
+CODE_SERVER_DATAROOT=<%= XDG_DATA_HOME["aarch64"] %>/VSCode
+mkdir -p ${CODE_SERVER_DATAROOT}/extensions
+
+cd "${HOME}"
+export LANG=C
+
+# Expose the password to the server.
+export PASSWORD="$password"
+
+# Run code-server
+CODE_SERVER_DIR=/home/ondemand/softwares/code-server
+export PATH=${CODE_SERVER_DIR}/bin:$PATH
+export LD_LIBRARY_PATH=${CODE_SERVER_DIR}/lib:$LD_LIBRARY_PATH
+code-server \
+  --auth="password" \
+  --bind-addr="0.0.0.0:${port}" \
+  --disable-telemetry \
+  --user-data-dir="$CODE_SERVER_DATAROOT" \
+  --extensions-dir="$CODE_SERVER_DATAROOT/extensions" \
+  --log debug --disable-update-check

@@ -1,0 +1,14 @@
+---
+cluster: rikyu
+attributes:
+  font_size:
+    label: 'Font size*'
+    widget: number_field
+    value: 16
+    max: 30
+    min: 10
+form:
+  - global_hours
+  - global_gpus
+  - global_processes
+  - font_size

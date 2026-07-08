@@ -1,0 +1,9 @@
+name: Terminal
+category: Interactive Apps
+subcategory: Development
+role: batch_connect
+description: |
+  This application launches an interactive shell on a compute node. It is built using <a href="https://github.com/tmux/tmux/wiki">tmux</a> and <a href="https://github.com/OpenOnDemandJP/ttyd">a customized version of ttyd</a>.
+new_window: true
+tile:
+  sub_caption: |

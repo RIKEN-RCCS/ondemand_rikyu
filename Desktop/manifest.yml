@@ -1,0 +1,10 @@
+name: Desktop
+category: Interactive Apps
+icon: fa://desktop
+subcategory: Development
+role: batch_connect
+description: |
+  This application launches an interactive desktop (Xfce).
+new_window: true
+tile:
+  sub_caption: |

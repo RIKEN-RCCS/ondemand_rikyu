@@ -1,0 +1,10 @@
+<%
+  require_relative "/var/www/ood/apps/sys/ondemand_rikyu/misc/config.rb"
+%>
+---
+batch_connect:
+  template: "basic"
+
+script:
+  <%= script("ood_Terminal", global_hours, global_gpus, global_processes) %>
+  

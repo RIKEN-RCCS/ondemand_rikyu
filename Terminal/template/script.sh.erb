@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# benchmark info
+echo "TIMING - Starting main script at: $(date)"
+
+# set the TERM
+export TERM="xterm-256color"
+
+# set working directory
+cd "$HOME" || exit 7
+
+# launch ttyd
+#TTYD_PATH="$(which --skip-alias --skip-functions ttyd)"
+export TTYD_BASE_PATH="/node/${HOST}/${PORT}/${PASSWORD}"
+/home/ondemand/softwares/oodjp_ttyd/bin/ttyd \
+  -p "${PORT}" \
+  -t "fontSize=${OOD_FONT_SIZE}" \
+  -t 'cursorStyle=bar' \
+  -t 'cursorBlink=true' \
+  -t 'theme={"background": "#282a36", "foreground": "#f8f8f2"}' \
+  -W -m 1  \
+  "$OOD_STAGED_ROOT/tmux.sh"
+
