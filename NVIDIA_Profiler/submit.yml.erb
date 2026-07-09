@@ -1,0 +1,26 @@
+<%
+  require_relative "/var/www/ood/apps/sys/ondemand_rikyu/misc/config.rb"
+  XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+  APP_NAME = "NVIDIA_Profiler"
+%>
+---
+batch_connect:
+  template: vnc
+  websockify_cmd: '/usr/bin/websockify'
+  script_wrapper: |
+    cat << "CTRSCRIPT" > container.sh
+    export LANG=C
+    export PATH="$PATH:/opt/TurboVNC/bin"
+    # Setup XDG_RUNTIME_DIR
+    export XDG_RUNTIME_DIR="$(mktemp -d -p "${TMPDIR:-/tmp}" -t "${USER}-xdgrun-XXXXXX")"
+    chmod 700 "${XDG_RUNTIME_DIR}"
+    %s
+    CTRSCRIPT
+
+    # Set SINGULARITY_BINDPATH
+    export APPTAINER_BIND=/fast1,/shared,/data1,/etc/profile.d,/tmp
+    export APPTAINERENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["aarch64"] %>/<%= APP_NAME %>
+    apptainer run --env PS1='\u@\h:\w\$ ' --nv <%= CONTAINER_IMAGE["aarch64"] %> bash ./container.sh
+
+script:
+  <%= script("ood_#{APP_NAME}", global_hours, global_gpus, global_processes) %>

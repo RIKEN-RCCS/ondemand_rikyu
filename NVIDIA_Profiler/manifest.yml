@@ -1,0 +1,10 @@
+---
+name: NVIDIA Profiler
+icon: fa://chart-bar
+category: Interactive Apps
+subcategory: Profiler
+role: batch_connect
+description: |
+  [NVIDIA Nsight Compute](https://developer.nvidia.com/nsight-compute) and [NVIDIA Nsight Systems](https://developer.nvidia.com/nsight-systems) are profilers for NVIDIA GPUs.
+tile:
+  sub_caption: |
