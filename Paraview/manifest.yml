@@ -1,6 +1,6 @@
 name: ParaView
 category: Interactive Apps
-subcategory: Visualization
+subcategory: Viewer
 role: batch_connect
 description: |
   <a target="_blank" rel="noopener noreferrer" href="https://www.paraview.org">Paraview</a> is a scientific data visualization program.
