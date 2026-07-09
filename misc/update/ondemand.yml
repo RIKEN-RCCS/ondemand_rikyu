@@ -5,6 +5,7 @@ pinned_apps:
   - sys/Desktop
   - sys/Terminal
   - sys/VSCode
+  - sys/NVIDIA_Profiler
   - sys/Gnuplot
   - sys/Paraview
   - sys/PyMOL

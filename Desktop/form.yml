@@ -1,14 +1,7 @@
 ---
 cluster: rikyu
-attributes:
-  enable_vgl:
-    widget: "check_box"
-    label: "Enable VirtualGL"
-    value: "0"
-    help: "Use VirtualGL to enable GPU-accelerated rendering for visualization workloads. May increase GPU resource usage."
 form:
   - global_hours
   - global_gpus
   - global_processes
-  - enable_vgl
   

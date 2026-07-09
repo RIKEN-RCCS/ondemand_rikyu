@@ -17,6 +17,9 @@ From: ubuntu:24.04
   # Screen saver disabled for remote desktop usage
   apt remove -y xfce4-screensaver light-locker
   #
+  # NVIDIA Nsight Compute
+  ${APT_INSTALL} libxcb-dri2-0 libxcb-cursor0 libglapi-mesa
+  #
   # TurboVNC
   ${APT_INSTALL} gpg wget libturbojpeg
   wget -q -O- https://packagecloud.io/dcommander/turbovnc/gpgkey | gpg --dearmor >/etc/apt/trusted.gpg.d/TurboVNC.gpg

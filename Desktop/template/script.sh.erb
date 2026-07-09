@@ -1,8 +1,8 @@
 <%= set_xfce %>
   
 # Start up xfce desktop (block until user logs out of desktop)
-<% if context.enable_vgl == "0" %>
 xfce4-session
-<% else %>
-vglrun -d egl xfce4-session
-<% end %>
+
+# Using `vglrun` prevents the `module` command from working.
+# There is likely a workaround, but it seems like a hassle, so I’ve decided not to use it.
+#vglrun -d egl xfce4-session
