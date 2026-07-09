@@ -46,7 +46,13 @@ From: ubuntu:24.04
 
   # PyMOL
   ${APT_INSTALL} pymol python3-pymol python3-zombie-imp
-  
+
+  # OVITO
+  cd /opt
+  wget https://www.ovito.org/download/master/ovito-basic-3.15.5-aarch64.tar.xz
+  tar Jxf ovito-basic-3.15.5-aarch64.tar.xz
+  rm ovito-basic-3.15.5-aarch64.tar.xz
+  ln -s ovito-basic-3.15.5-aarch64 ovito
   #============================================================
   # Interactive application (Optional)
   #============================================================
@@ -65,6 +71,9 @@ From: ubuntu:24.04
   # VirtualGL
   export PATH=/opt/VirtualGL/bin:$PATH
 
-  # JupyterLab
+  # firefox
   export PATH=/opt/firefox:$PATH
+
+  # OVITO
+  export PATH=/opt/ovito/bin:$PATH
   

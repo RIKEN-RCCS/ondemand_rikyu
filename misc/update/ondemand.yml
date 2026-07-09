@@ -7,6 +7,7 @@ pinned_apps:
   - sys/VSCode
   - sys/NVIDIA_Profiler
   - sys/Gnuplot
+  - sys/OVITO
   - sys/Paraview
   - sys/PyMOL
 
