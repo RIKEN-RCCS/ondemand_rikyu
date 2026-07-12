@@ -1,0 +1,12 @@
+en:
+  dashboard:
+    welcome_html: |
+      <div class="card rikyu-welcome-card mb-4">
+        <div class="card-body">
+          <div class="rikyu-welcome-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+          <div class="rikyu-welcome-text">
+            %{logo_img_tag}
+            <p class="lead">OnDemand provides an integrated, single access point for all of your HPC resources.</p>
+          </div>
+        </div>
+      </div>

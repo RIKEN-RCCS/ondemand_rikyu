@@ -1,0 +1,8 @@
+<%
+  group_name = LustreGroupQuota.group_name
+%>
+<%= render partial: 'widgets/quota_card', locals: {
+  title: t('dashboard.group_quota.title', default: "Group Directory Usage (/data1/#{group_name})"),
+  icon: 'fa-users',
+  quota: LustreGroupQuota.fetch
+} %>

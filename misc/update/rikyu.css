@@ -1,0 +1,117 @@
+:root {
+  --rikyu-base: #4C7A56;   /* 煎茶色 (70%) */
+  --rikyu-main: #8A7B4F;   /* 利休茶 (25%) */
+  --rikyu-accent: #ED6D3D; /* 柿色 (5%) */
+}
+
+.gpu-spec-table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.gpu-spec-table th,
+.gpu-spec-table td {
+  border: 1px solid var(--rikyu-main) !important;
+  padding: 0.3rem 0.5rem !important;
+  text-align: right;
+}
+
+.gpu-spec-table th {
+  background-color: var(--rikyu-main);
+  color: white;
+}
+
+.gpu-spec-table td {
+  background-color: #ffffff !important;
+}
+
+/* Dashboard welcome card (flashier hero-style card) */
+.rikyu-welcome-card {
+  position: relative;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.rikyu-welcome-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--rikyu-base), var(--rikyu-main), var(--rikyu-accent));
+}
+
+.rikyu-welcome-card .card-body {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1.75rem;
+}
+
+.rikyu-welcome-icon {
+  flex: 0 0 auto;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rikyu-base), var(--rikyu-main));
+  color: #fff;
+  font-size: 1.75rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.rikyu-welcome-text {
+  flex: 1 1 300px;
+  min-width: 0;
+}
+
+.rikyu-welcome-text .lead {
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* Dashboard sidebar cards (Links, Home/Group Directory Usage) */
+.links-card,
+.quota-card {
+  border: 1px solid var(--rikyu-main);
+}
+
+.links-card .card-header,
+.quota-card .card-header {
+  background-color: var(--rikyu-main);
+  border-bottom: 1px solid var(--rikyu-main);
+  color: #fff;
+}
+
+.links-card .card-header i,
+.quota-card .card-header i {
+  color: #fff;
+}
+
+.links-card .card-header h3,
+.quota-card .card-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+/* Pinned Apps tiles: brand-colored border, no drop shadow */
+.app-launcher {
+  box-shadow: none;
+}
+
+.launcher-click {
+  border-color: var(--rikyu-base) !important;
+}
+
+/* "all available apps" link in the Pinned Apps caption */
+h2 small a {
+  color: var(--rikyu-base);
+}

@@ -1,0 +1,5 @@
+<%= render partial: 'widgets/quota_card', locals: {
+  title: t('dashboard.home_quota.title', default: 'Home Directory Usage (/home)'),
+  icon: 'fa-hdd',
+  quota: LustreHomeQuota.fetch
+} %>

@@ -2,14 +2,14 @@ pinned_apps:
   - category: Files
   - category: Jobs
   - category: Clusters
-  - sys/Desktop
-  - sys/Terminal
-  - sys/VSCode
-  - sys/NVIDIA_Profiler
-  - sys/Gnuplot
-  - sys/OVITO
-  - sys/Paraview
-  - sys/PyMOL
+#  - sys/Desktop
+#  - sys/Terminal
+#  - sys/VSCode
+#  - sys/NVIDIA_Profiler
+#  - sys/Gnuplot
+#  - sys/OVITO
+#  - sys/Paraview
+#  - sys/PyMOL
 
 nav_bar:
   - Files
@@ -20,19 +20,31 @@ nav_bar:
 
 remote_files_enabled: true
 
+dashboard_title: "RIKYU OnDemand"
+
+brand_bg_color: "#4C7A56"
+brand_link_active_bg_color: "#2A4E33"
+
+disable_dashboard_welcome_message: true
+
 dashboard_layout:
   rows:
     - columns:
-      - width: 12
+      - width: 8
         widgets:
           - pinned_apps
+      - width: 4
+        widgets:
+          - links
+          - home_quota
+          - group_quota
 
 custom_css_files: ["/rikyu.css"]
 
-help_menu:
-  - title: "Manual (English)"
-    icon: "fas://book"
-    url: "https://docs.r-ccs.riken.jp/rikyu/en/"
-  - title: "Manual (Japanese)"
-    icon: "fas://book"
-    url: "https://docs.r-ccs.riken.jp/rikyu/ja/"
+#help_menu:
+#  - title: "Manual (English)"
+#    icon: "fas://book"
+#    url: "https://docs.r-ccs.riken.jp/rikyu/en/"
+#  - title: "Manual (Japanese)"
+#    icon: "fas://book"
+#    url: "https://docs.r-ccs.riken.jp/rikyu/ja/"
