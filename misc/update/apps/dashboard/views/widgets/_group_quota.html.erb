@@ -1,8 +1,15 @@
+<% group_name = LustreGroupQuota.group_name %>
+<%- if group_name.present? -%>
 <%
-  group_name = LustreGroupQuota.group_name
+  group_dir = "/data1/#{group_name}"
+  group_link = link_to("https://ondemand.rikyu.r-ccs.riken.jp/pun/sys/dashboard/files/fs#{group_dir}", target: '_blank', rel: 'noopener', class: 'rikyu-link-base') do
+    raw("#{ERB::Util.html_escape(group_dir)}<i class=\"fas fa-external-link-alt rikyu-ext-icon\" aria-hidden=\"true\"></i>")
+  end
+  group_title = "#{t('dashboard.group_quota.title', default: 'Group Directory')} (#{group_link})".html_safe
 %>
 <%= render partial: 'widgets/quota_card', locals: {
-  title: t('dashboard.group_quota.title', default: "Group Directory Usage (/data1/#{group_name})"),
+  title: group_title,
   icon: 'fa-users',
   quota: LustreGroupQuota.fetch
 } %>
+<%- end -%>

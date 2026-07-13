@@ -1,0 +1,66 @@
+<%
+  begin
+    slurm = SlurmStatus.fetch
+    jobs = SlurmJobs.fetch
+    slurm_error = nil
+  rescue SlurmStatus::Error, SlurmJobs::Error => e
+    slurm_error = e.message
+  end
+
+  bar_class = lambda do |pct|
+    if pct >= 90
+      'bg-danger'
+    elsif pct >= 70
+      'bg-warning'
+    else
+      'bg-success'
+    end
+  end
+%>
+<div class="card mb-4 slurm-card">
+  <div class="card-header">
+    <h3><i class="fas fa-server" aria-hidden="true"></i> <%= t('dashboard.slurm.title', default: 'Slurm Status') %></h3>
+  </div>
+  <div class="card-body">
+    <%- if slurm_error -%>
+      <p class="text-muted mb-0"><%= t('dashboard.slurm.unavailable', default: 'Slurm status is currently unavailable.') %></p>
+    <%- else -%>
+      <div class="mb-3">
+        <div class="d-flex justify-content-between">
+          <span><%= t('dashboard.slurm.nodes_in_use', default: 'Nodes in use') %></span>
+          <span><%= slurm.used %> / <%= slurm.available %> (<%= slurm.used_percent %>%)</span>
+        </div>
+        <div class="progress" role="progressbar" aria-label="<%= t('dashboard.slurm.nodes_in_use', default: 'Nodes in use') %>" aria-valuenow="<%= slurm.used_percent %>" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar <%= bar_class.call(slurm.used_percent) %>" style="width: <%= [slurm.used_percent, 100].min %>%"></div>
+        </div>
+      </div>
+
+      <% running_jobs = jobs.select(&:running?) %>
+      <div>
+        <div class="mb-1 fw-bold"><a href="https://ondemand.rikyu.r-ccs.riken.jp/pun/sys/dashboard/activejobs" target="_blank" rel="noopener" class="rikyu-link-plain"><%= t('dashboard.slurm.my_running_jobs', default: 'My Running Jobs') %><i class="fas fa-external-link-alt rikyu-ext-icon" aria-hidden="true"></i></a></div>
+        <%- if running_jobs.empty? -%>
+          <p class="text-muted mb-0"><%= t('dashboard.slurm.no_running_jobs', default: 'No running jobs.') %></p>
+        <%- else -%>
+          <table class="table table-sm mb-0">
+            <thead>
+              <tr>
+                <th class="text-nowrap text-end px-2"><%= t('dashboard.slurm.job_id', default: 'Job ID') %></th>
+                <th class="text-nowrap px-2"><%= t('dashboard.slurm.job_name', default: 'Job Name') %></th>
+                <th class="text-nowrap text-end px-2"><%= t('dashboard.slurm.time', default: 'Elapsed Time') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- running_jobs.each do |job| -%>
+                <tr>
+                  <td class="align-middle text-end px-2"><%= job.id %></td>
+                  <td class="align-middle text-break px-2"><%= job.name %></td>
+                  <td class="align-middle text-end px-2"><%= job.time %></td>
+                </tr>
+              <%- end -%>
+            </tbody>
+          </table>
+        <%- end -%>
+      </div>
+    <%- end -%>
+  </div>
+</div>

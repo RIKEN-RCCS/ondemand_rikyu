@@ -22,8 +22,8 @@ remote_files_enabled: true
 
 dashboard_title: "RIKYU OnDemand"
 
-brand_bg_color: "#4C7A56"
-brand_link_active_bg_color: "#2A4E33"
+brand_bg_color: "#366E4C"
+brand_link_active_bg_color: "#21472F"
 
 disable_dashboard_welcome_message: true
 
@@ -35,9 +35,10 @@ dashboard_layout:
           - pinned_apps
       - width: 4
         widgets:
-          - links
+          - slurm_status
           - home_quota
           - group_quota
+          - links
 
 custom_css_files: ["/rikyu.css"]
 

@@ -1,7 +1,7 @@
 :root {
-  --rikyu-base: #4C7A56;   /* 煎茶色 (70%) */
-  --rikyu-main: #8A7B4F;   /* 利休茶 (25%) */
-  --rikyu-accent: #ED6D3D; /* 柿色 (5%) */
+  --rikyu-base: #366E4C;        /* 千歳緑 (primary: card header) */
+  --rikyu-main: #A59564;        /* 利休茶 (secondary: borders, bands) */
+  --rikyu-accent: #8C4A2F;      /* 柿渋色 (decorative accent) */
 }
 
 .gpu-spec-table {
@@ -76,30 +76,55 @@
   font-weight: 500;
 }
 
-/* Dashboard sidebar cards (Links, Home/Group Directory Usage) */
+/* Dashboard sidebar cards (Links, Home/Group Directory Usage, Slurm Status) */
 .links-card,
-.quota-card {
+.quota-card,
+.slurm-card {
   border: 1px solid var(--rikyu-main);
 }
 
 .links-card .card-header,
-.quota-card .card-header {
-  background-color: var(--rikyu-main);
-  border-bottom: 1px solid var(--rikyu-main);
+.quota-card .card-header,
+.slurm-card .card-header {
+  background-color: var(--rikyu-base);
+  border-bottom: 1px solid var(--rikyu-base);
   color: #fff;
 }
 
 .links-card .card-header i,
-.quota-card .card-header i {
+.quota-card .card-header i,
+.slurm-card .card-header i {
   color: #fff;
 }
 
 .links-card .card-header h3,
-.quota-card .card-header h3 {
+.quota-card .card-header h3,
+.slurm-card .card-header h3 {
   display: flex;
   align-items: center;
   gap: 0.4rem;
   margin: 0;
+}
+
+/* Card links: no underline at rest, underline on hover (an external-link icon marks them as links). */
+/* Extra specificity (.card .rikyu-link-*) and !important needed to beat the theme's .card a { text-decoration: none !important; } */
+
+/* Links on the green card header (Home/Group Directory path) — white text (blue would be unreadable on green). */
+.card .rikyu-link-base {
+  color: #fff;
+}
+
+/* .rikyu-link-plain (My Running Jobs, white card body) keeps the theme default link color (blue). */
+
+.card .rikyu-link-base:hover,
+.card .rikyu-link-plain:hover {
+  text-decoration: underline !important;
+}
+
+/* Small external-link glyph appended to card links. */
+.rikyu-ext-icon {
+  font-size: 0.8em;
+  margin-left: 0.25em;
 }
 
 /* Pinned Apps tiles: brand-colored border, no drop shadow */
@@ -111,7 +136,79 @@
   border-color: var(--rikyu-base) !important;
 }
 
-/* "all available apps" link in the Pinned Apps caption */
-h2 small a {
-  color: var(--rikyu-base);
+/* Pinned Apps section title — slightly smaller than the default h2. */
+h2:has(> small) {
+  font-size: 1.4rem;
+}
+
+/* "all available apps" caption link — underline on hover only. */
+/* [href] + !important beat the browser's a:-webkit-any-link { text-decoration: none !important }. */
+h2 small a[href]:hover {
+  text-decoration: underline !important;
+}
+
+/* Links inside rendered markdown content (app description popovers, MOTD, etc.) — underline on hover. */
+.ood-appkit.markdown a[href]:hover {
+  text-decoration: underline !important;
+}
+
+/* ============================================================
+   Recolor OOD's Bootstrap blue base (#337AB7) to the Rikyu green.
+   Overrides Bootstrap variables (and a few hardcoded blues) so
+   links, primary buttons, the Interactive Apps menu highlight,
+   nav pills and form controls follow the site palette.
+   ============================================================ */
+:root {
+  --bs-blue: #366E4C;
+  --bs-primary: #366E4C;
+  --bs-primary-rgb: 54, 110, 76;
+  --bs-focus-ring-color: rgba(54, 110, 76, 0.25);
+  /* Link color is intentionally left at the theme default (blue). */
+}
+
+.list-group {
+  /* Mid light-green selected item with white text (~3.5:1). */
+  --bs-list-group-active-bg: #6B936E;
+  --bs-list-group-active-border-color: #6B936E;
+  --bs-list-group-active-color: #fff;
+}
+
+.nav-pills {
+  --bs-nav-pills-link-active-bg: #366E4C;
+}
+
+.btn-primary {
+  --bs-btn-bg: #366E4C;
+  --bs-btn-border-color: #366E4C;
+  --bs-btn-hover-bg: #29583B;
+  --bs-btn-hover-border-color: #29583B;
+  --bs-btn-active-bg: #21472F;
+  --bs-btn-active-border-color: #21472F;
+  --bs-btn-disabled-bg: #366E4C;
+  --bs-btn-disabled-border-color: #366E4C;
+}
+
+.dropdown-menu {
+  /* Match the soft green used for the selected list-group item. */
+  --bs-dropdown-link-active-bg: #6B936E;
+  --bs-dropdown-link-active-color: #fff;
+}
+
+/* Hardcoded (non-variable) blue in form controls. */
+.form-check-input:checked {
+  background-color: #366E4C;
+  border-color: #366E4C;
+}
+
+.form-range::-webkit-slider-thumb {
+  background-color: #366E4C;
+}
+
+.form-range::-moz-range-thumb {
+  background-color: #366E4C;
+}
+
+/* Interactive Apps menu card header — green instead of the theme's blue. */
+.system-and-shared-apps-header {
+  background-color: var(--rikyu-base);
 }

@@ -1,5 +1,12 @@
+<%
+  home_dir = Dir.home
+  home_link = link_to("https://ondemand.rikyu.r-ccs.riken.jp/pun/sys/dashboard/files/fs#{home_dir}", target: '_blank', rel: 'noopener', class: 'rikyu-link-base') do
+    raw("#{ERB::Util.html_escape(home_dir)}<i class=\"fas fa-external-link-alt rikyu-ext-icon\" aria-hidden=\"true\"></i>")
+  end
+  home_title = "#{t('dashboard.home_quota.title', default: 'Home Directory')} (#{home_link})".html_safe
+%>
 <%= render partial: 'widgets/quota_card', locals: {
-  title: t('dashboard.home_quota.title', default: 'Home Directory Usage (/home)'),
+  title: home_title,
   icon: 'fa-hdd',
   quota: LustreHomeQuota.fetch
 } %>
