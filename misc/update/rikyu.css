@@ -1,12 +1,11 @@
 :root {
   --rikyu-base: #366E4C;        /* 千歳緑 (primary: card header) */
   --rikyu-main: #A59564;        /* 利休茶 (secondary: borders, bands) */
-  --rikyu-accent: #8C4A2F;      /* 柿渋色 (decorative accent) */
+  --rikyu-accent: #ED6D3D;      /* 柿色 (decorative accent) */
 }
 
 .gpu-spec-table {
-  width: 100%;
-  border-spacing: 0;
+  border-collapse: collapse;
 }
 
 .gpu-spec-table th,
@@ -18,11 +17,28 @@
 
 .gpu-spec-table th {
   background-color: var(--rikyu-main);
-  color: white;
+  color: #fff;
 }
 
 .gpu-spec-table td {
-  background-color: #ffffff !important;
+  background-color: #fff !important;
+}
+
+/* th同士の境界だけ白線を重ねる */
+.gpu-spec-table th {
+  position: relative;
+}
+
+.gpu-spec-table th:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px;
+  bottom: 0;
+  width: 1px;
+  background-color: #fff;
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* Dashboard welcome card (flashier hero-style card) */
@@ -86,8 +102,9 @@
 .links-card .card-header,
 .quota-card .card-header,
 .slurm-card .card-header {
-  background-color: var(--rikyu-base);
-  border-bottom: 1px solid var(--rikyu-base);
+  /* Header and frame both use Rikyucha (利休茶). */
+  background-color: var(--rikyu-main);
+  border-bottom: 1px solid var(--rikyu-main);
   color: #fff;
 }
 
@@ -134,6 +151,7 @@
 
 .launcher-click {
   border-color: var(--rikyu-base) !important;
+  border-width: 3px !important;
 }
 
 /* Pinned Apps section title — slightly smaller than the default h2. */
