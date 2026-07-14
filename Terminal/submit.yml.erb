@@ -6,5 +6,5 @@ batch_connect:
   template: "basic"
 
 script:
-  <%= script("ood_Terminal", global_hours, global_gpus, global_processes) %>
+  <%= script("ood_Terminal", (defined?(global_group) ? global_group : nil), global_hours, global_gpus, global_processes) %>
   
