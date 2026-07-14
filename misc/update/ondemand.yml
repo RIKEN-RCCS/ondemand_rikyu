@@ -1,7 +1,10 @@
 pinned_apps:
   - category: Files
   - category: Jobs
-  - category: Clusters
+  # Clusters apps listed explicitly to fix order (match navbar dropdown; category token follows filesystem order instead)
+  - sys/DeletePasskey
+  - sys/shell
+  - sys/SshPublicKeyManager
 #  - sys/Desktop
 #  - sys/Terminal
 #  - sys/VSCode

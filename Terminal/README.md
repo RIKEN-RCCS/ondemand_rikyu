@@ -28,5 +28,5 @@ cd ttyd/
 cp /var/www/ood/apps/sys/ondemand_rikyu/Terminal/misc/CMakeLists.txt .
 cp /var/www/ood/apps/sys/ondemand_rikyu/Terminal/misc/cross-build.sh scripts/
 CROSS_ROOT="$HOME/ttyd_tmp/local" BUILD_ROOT="$HOME/ttyd_tmp/build" STAGE_ROOT="$HOME/ttyd_tmp/stage" BUILD_TARGET=arm64 ./scripts/cross-build.sh
-cp build/ttyd /home/ondemand/softwares/oodjp_ttyd/bin/ttyd
+cp build/ttyd /shared/software/OpenOnDemand/apps/oodjp_ttyd/bin/ttyd
 ```
