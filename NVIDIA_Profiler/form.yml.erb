@@ -1,0 +1,20 @@
+<%- require_relative "/var/www/ood/apps/sys/ondemand_rikyu/misc/config.rb" -%>
+---
+cluster: rikyu
+form:
+<%- if rkp_groups.size >= 2 -%>
+  - global_group
+<%- end -%>
+  - global_hours
+  - global_gpus
+  - application
+  - global_processes
+
+attributes:
+  application:
+    widget: "select"
+    label: "Select Application*"
+    options:
+      - ["NVIDIA Nsight Compute",  "ncu-ui" ]
+      - ["NVIDIA Nsight Systems",  "nsys-ui"]
+    help: Choose which profiler will start automatically. You can launch the other one later from a terminal inside the session by running its command.

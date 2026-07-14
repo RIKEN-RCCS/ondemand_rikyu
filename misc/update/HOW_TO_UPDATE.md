@@ -21,7 +21,7 @@ done
 
 ```sh
 ln -s /var/www/ood/apps/sys/ondemand_rikyu/misc/update/rikyu.yml /etc/ood/config/clusters.d/
-ln -s /var/www/ood/apps/sys/ondemand_rikyu/misc/update/global_bc_items.yml /etc/ood/config/ondemand.d/
+ln -s /var/www/ood/apps/sys/ondemand_rikyu/misc/update/global_bc_items.yml.erb /etc/ood/config/ondemand.d/
 ln -s /var/www/ood/apps/sys/ondemand_rikyu/misc/update/ondemand.yml /etc/ood/config/ondemand.d/
 ln -s /var/www/ood/apps/sys/ondemand_rikyu/misc/update/apps /etc/ood/config/
 ln -s /var/www/ood/apps/sys/ondemand_rikyu/misc/update/locales /etc/ood/config/

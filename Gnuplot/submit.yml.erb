@@ -23,4 +23,4 @@ batch_connect:
     apptainer run --env PS1='\u@\h:\w\$ ' --nv <%= CONTAINER_IMAGE["aarch64"] %> bash ./container.sh
 
 script:
-  <%= script("ood_#{APP_NAME}", global_hours, global_gpus, global_processes) %>
+  <%= script("ood_#{APP_NAME}", (defined?(global_group) ? global_group : nil), global_hours, global_gpus, global_processes) %>

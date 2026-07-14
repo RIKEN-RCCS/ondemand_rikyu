@@ -1,0 +1,12 @@
+<%- require_relative "/var/www/ood/apps/sys/ondemand_rikyu/misc/config.rb" -%>
+---
+cluster: rikyu
+form:
+<%- if rkp_groups.size >= 2 -%>
+  - global_group
+<%- end -%>
+  - global_hours
+  - global_gpus
+  - global_processes
+  - global_input_file
+  

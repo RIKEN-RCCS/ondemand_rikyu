@@ -123,11 +123,13 @@ BASH
 end
 
 # Generate YAML in submit.sh.erb
-def script(name, hours, gpus, processes, email = "")
+# Generate YAML in submit.yml.erb
+def script(name, group, hours, gpus, processes, email = "")
   yaml =  "  job_name: #{name}\n"
   yaml << "    native:\n"
   yaml << "      - \"--time=#{hours}:00:00\"\n"
   yaml << "      - \"--gpus=#{gpus}\"\n"
+  yaml << "      - \"--account=#{group}\"\n"	unless group.nil? || group.to_s.strip.empty?
   yaml << "      - \"--ntasks=#{processes}\"\n"	unless processes.blank?
   unless email.blank?
     yaml << "    email: #{email}\n"
@@ -135,4 +137,10 @@ def script(name, hours, gpus, processes, email = "")
   end
 
   yaml
+end
+
+# The user's Unix groups of the form rkp<digits> (e.g. rkp00010), sorted & unique.
+# Single source of truth for the group selector (options and show/hide gate).
+def rkp_groups
+  `groups`.split.select { |g| g =~ /\Arkp[0-9]+\z/ }.uniq.sort
 end

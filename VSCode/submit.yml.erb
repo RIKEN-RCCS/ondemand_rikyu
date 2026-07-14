@@ -1,7 +1,7 @@
+<%- require_relative "/var/www/ood/apps/sys/ondemand_rikyu/misc/config.rb" -%>
 ---
 batch_connect:
   template: "basic"
 
 script:
-  <%= script("ood_VSCode", global_hours, global_gpus, global_processes) %>
-  
+  <%= script("ood_VSCode", (defined?(global_group) ? global_group : nil), global_hours, global_gpus, global_processes) %>

@@ -1,4 +1,13 @@
+<%- require_relative "/var/www/ood/apps/sys/ondemand_rikyu/misc/config.rb" -%>
 global_bc_form_items:
+  global_group:
+    widget: "select"
+    label: "Group"
+    options:
+<%- rkp_groups.each do |g| -%>
+    - ["<%= g %>", "<%= g %>"]
+<%- end -%>
+
   global_hours:
     widget: "number_field"
     label: 'Maximum run time (1 - 96 hours)*'
