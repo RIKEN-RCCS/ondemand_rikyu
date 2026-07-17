@@ -1,0 +1,10 @@
+name: JupyterLab
+category: Interactive Apps
+subcategory: Development
+role: batch_connect
+description: |
+  <a target="_blank" rel="noopener noreferrer" href="https://jupyter.org/">JupyterLab</a> is the latest web-based interactive development environment for notebooks, code, and data. This app runs JupyterLab inside a container built from the NVIDIA NGC image <a target="_blank" rel="noopener noreferrer" href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch"><code>nvcr.io/nvidia/pytorch:25.06-py3</code></a>.
+new_window: true
+tile:
+  sub_caption: |
+    Base image: nvcr.io/nvidia/pytorch:25.06-py3

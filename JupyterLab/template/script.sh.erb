@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# JupyterLab itself lives in the container (read-only).
+# User-installed extensions/packages persist in $HOME via
+# "pip install --user" (PYTHONUSERBASE); Python and Jupyter
+# discover them automatically, so no PYTHONPATH juggling needed.
+CONTAINER_IMAGE="/shared/software/OpenOnDemand/images/jupyterlab.sif"
+export APPTAINERENV_PYTHONUSERBASE=${HOME}/ondemand/JupyterLab
+export APPTAINERENV_JUPYTER_DATA_DIR=${HOME}/ondemand/JupyterLab/share/jupyter
+export APPTAINER_BIND=/fast1,/shared,/data1,/etc/profile.d,/tmp
+mkdir -p ${APPTAINERENV_JUPYTER_DATA_DIR}
+
+cd ${HOME}
+export LANG=C
+apptainer run --env PS1='\u@\h:\w\$ ' --nv ${CONTAINER_IMAGE} jupyter-lab --config="${CONFIG_FILE}"
