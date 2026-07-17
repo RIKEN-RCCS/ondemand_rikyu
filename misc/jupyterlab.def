@@ -1,0 +1,14 @@
+# https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags
+Bootstrap: docker
+From: nvcr.io/nvidia/pytorch:25.06-py3
+
+%post
+    # - lmod: so that the host's /etc/profile.d/lmod.sh (bind-mounted into
+    #   the container) finds its binaries; same Ubuntu package/path as the host
+    # - emacs-nox: terminal Emacs (no GUI) for use in JupyterLab terminals
+    apt-get update && apt-get install -y --no-install-recommends lmod emacs-nox
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+    pip install --no-cache-dir \
+        jupyterlab-git \
+        ipympl
