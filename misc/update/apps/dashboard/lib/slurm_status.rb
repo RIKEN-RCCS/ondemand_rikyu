@@ -22,10 +22,15 @@ module SlurmStatus
   IDLE_STATES = %w[idle].freeze
 
   def self.fetch
-    stdout, status = run('bash', '-lc', %(sinfo -N -h -o "%t"))
+    stdout, status = run('bash', '-lc', %(sinfo -N -h -o "%N %t"))
     raise Error, "sinfo exited with #{status.exitstatus}" unless status.success?
 
-    states = stdout.each_line.map { |line| line.strip.downcase.gsub(/[^a-z]/, '') }.reject(&:empty?)
+    # `sinfo -N` prints one line per node per partition, and nodes belong to
+    # several partitions, so count each node name only once.
+    states = stdout.each_line.map(&:split).select { |fields| fields.size == 2 }
+                   .uniq(&:first)
+                   .map { |_, state| state.downcase.gsub(/[^a-z]/, '') }
+                   .reject(&:empty?)
     total = states.size
     used = states.count { |s| USED_STATES.include?(s) }
     idle = states.count { |s| IDLE_STATES.include?(s) }
