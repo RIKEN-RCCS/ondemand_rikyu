@@ -1,5 +1,6 @@
 en:
   dashboard:
+    system_apps_caption: ""
     welcome_html: |
       <div class="card rikyu-welcome-card mb-4">
         <div class="card-body">
